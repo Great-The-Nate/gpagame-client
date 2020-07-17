@@ -1,0 +1,118 @@
+.portfolio {
+	position: absolute;
+	padding: 0;
+	margin: 0;
+	height: 100%;
+	width: 100%;
+	z-index: -1;
+}
+
+.portfolio-background{
+	position: absolute;
+	top: 67px;
+	padding: 40px;
+	min-height: 100vh;
+	width: 100%;
+	background-color: #fafafa;
+	z-index: -2;
+	justify-content: center;
+}
+
+.portfolio-about-graph-container {
+	position: relative;
+	margin: auto;
+	display: flex;
+	flex-flow: row;
+	height: 500px;
+	width: 1100px;
+	margin-bottom: 30px;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.portfolio-graph-container{
+	display: flex;
+	flex-flow: column;
+	background-color: white;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	padding: 0px 20px;
+	padding-top: 10px;
+}
+
+.portfolio-graph-title{
+	width: 100%;
+	text-align: center;
+	font: 24px "Century Gothic", Futura, sans-serif;
+}
+
+.portfolio-graph{
+	position: relative;
+	left: -20px;
+	width: 100%;
+	height: 350px;
+	margin-bottom: 10px;
+}
+
+.portfolio-graph-length-bar{
+	width: 100%;
+	height: 70px;
+	display: flex;
+	flex-flow: row;
+	justify-content: flex-end;
+}
+
+.portfolio-graph-length-bar .inactive{
+	position: relative;
+	left: -430px;
+	width: 50px;
+	height: 100%;
+	font: 20px "Century Gothic", Futura, sans-serif;
+	display: flex;
+	justify-content: center;
+	padding-top: 30px;
+	padding-bottom: 10px;
+	background-color: white;
+	border: none;
+}
+.portfolio-graph-length-bar .inactive:hover{
+	background-color: #e0e0e0;
+	cursor: pointer;
+}
+
+.portfolio-graph-length-bar .active{
+	position: relative;
+	left: -430px;
+	width: 50px;
+	height: 100%;
+	border: none;
+	border-bottom: 2px solid black;
+	background-color: #e0e0e0;
+	font: 20px "Century Gothic", Futura, sans-serif;
+	display: flex;
+	justify-content: center;
+	padding-top: 30px;
+	padding-bottom: 10px;
+	cursor: pointer;
+}
+
+.portfolio-graph-length-bar-point-hover{
+	position: absolute;
+	height: 69px;
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	float: right;
+	font: 16px "Century Gothic", Futura, sans-serif;
+	visibility: hidden;
+}
+
+.portfolio-foreground{
+	padding: 20px;
+	height: 200px;
+	width: 90%;
+	background-color: white;
+	border-radius: 3px;
+	border: 1px solid #ddd;
+	margin: auto;
+}

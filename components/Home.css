@@ -1,0 +1,263 @@
+body {
+  font: 14px "Century Gothic", Futura, sans-serif;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+.dashboard{
+	background-color: #fafafa;
+	position: fixed;
+	left: 196px;
+	top: 67px;
+	height: 100%;
+	width: 100%;
+	overflow-y: auto;
+	visibility: visible;
+}
+
+.market-grid{
+	position: relative;
+	display: grid;
+	top: 60px;
+	width: 100%;
+	padding: 30px;
+	grid-gap: 30px;
+	grid-template-rows: repeat(auto-fit, 175px);
+}
+
+.market-stock{
+	height: 175px;
+	background-color: white;
+	border-radius: 4px;
+	border: 1px solid #e0e0e0;
+	box-shadow: 1px 1px #ddd;
+	display: flex;
+	flex-flow: row;
+	cursor: pointer;
+}
+
+.stock-info{
+	height: 135px;
+	border: 0px solid blue;
+	margin-left: 10px;
+	margin-top: 20px;
+}
+
+.stock-info-name{
+	height: 30px;
+	border: 0px solid green;
+	font: 24px "Century Gothic", Futura, sans-serif;
+	white-space: wrap;
+	overflow: hidden;
+  	text-overflow: ellipsis;
+}
+
+.stock-info-school{
+	height: 20px;
+	border: 0px solid green;
+	font: 14px "Century Gothic", Futura, sans-serif;
+	white-space: wrap;
+	overflow: hidden;
+  	text-overflow: ellipsis;
+}
+
+.stock-info-grade{
+	height: 20px;
+	width: 60px;
+	border: 0px solid green;
+	font: 14px "Century Gothic", Futura, sans-serif;
+	white-space: wrap;
+	overflow: hidden;
+  	text-overflow: ellipsis;
+}
+
+.stock-info-stats{
+	height: 50px;
+	margin-top: 20px;
+	border: 1px;
+	font: 22px "Century Gothic", Futura, sans-serif;
+	text-align: right;
+	border: 0px solid orange;
+}
+
+.stock-info-stats-change{
+	display: flex;
+	flex-flow: row;
+	justify-content: flex-end;
+}
+.stock-info-stats-change-numbers{
+	font: 16px "Century Gothic", Futura, sans-serif;
+}
+
+.stock-info-stats-change-past-week{
+	font: 14px "Century Gothic", Futura, sans-serif;
+	float: right;
+	margin-left: 3px;
+}
+
+.home-stock-profile-close-button {
+	position: absolute;
+	right: 25px;
+	top: 75px;
+	font-size: 32px;
+	color: #212121;
+	cursor: pointer;
+}
+
+.stock-exchange-panel {
+	position: fixed;
+	left: 1340px;
+	top: 150px;
+	height: 420px;
+	width: 235px;
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	background-color: white;
+	padding: 20px 15px;
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+}
+
+.stock-exchange-mode-bar {
+	width: 190px;
+	height: 35px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	display: flex;
+	flex-flow: row;
+	margin-bottom: 25px;
+}
+
+.stock-exchange-mode-bar div{
+	width: 50%;
+	height: 100%;
+	text-align: center;
+	padding: 7px;
+	font-size: 16px;
+	cursor: pointer;
+}
+.stock-exchange-mode-bar .active{
+	background-color: #ddd;
+}
+
+.stock-exchange-panel-info{
+	width: 100%;
+	padding: 5px;
+	border-bottom: 1px dotted black;
+	margin-bottom: 20px;
+}
+
+.stock-exchange-panel input{
+	width: 100%;
+	height: 50px;
+	padding: 10px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	font: 14px "Century Gothic", Futura, sans-serif;
+	margin-bottom: 20px;
+}
+
+.stock-exchange-panel button{
+	width: 100%;
+	height: 35px;
+	padding: 5px;
+	text-align: center;
+	font-style: bold;
+	color: white;
+	background-color: #212121;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.sorting-bar{
+	background-color: white;
+	position:fixed;
+	z-index: 1;
+	height:60px;
+	width:100%;
+	align-items: center;
+	box-shadow: 0px 1px #b8b8b8;
+	display: flex;
+	flex-flow: row;
+}
+
+.sorting-bar-button-row{
+	margin-left: 20px;
+	height:33px;
+	width:248px;
+	align-items: center;
+	display: flex;
+	flex-flow: row;
+}
+
+.sorting-bar-button-row div{
+	background-color: white;
+	text-align: center;
+}
+
+.sorting-bar-button-row div.active{
+	background-color: #ddd;
+}
+
+.sorting-bar-button-row div:hover{
+	background-color: #f0f0f0;
+}
+
+.sorting-bar-button{
+	border: none;
+	background-color: transparent;
+	text-align: center;
+	height: 30px;
+	width: 100%;
+	padding-right: 10px;
+	text-decoration: none;
+	font: 14px "Century Gothic", Futura, sans-serif;
+	cursor: pointer;
+}
+
+.sorting-bar i{
+	position: absolute;
+	top: 23px;
+	font-size: 18px;
+}
+
+.sorting-bar input[type=text] {
+	height: 29px;
+	width: 200px;
+	padding: 13px;
+	font: 14px "Century Gothic", Futura, sans-serif;
+	color: black;
+	background-color: #fafafa;
+	border: 1px solid #ddd;
+	border-radius: 15px;
+}
+.sorting-bar input::placeholder {
+	color:black;
+}
+
+.side-bar{
+	width: 195px;
+	border-right: 1px solid #ddd;
+	position: absolute;
+	top: 67px;
+	overflow-y: auto;
+	background-color: white;
+}
+
+.side-bar-student-name{
+	padding: 20px;
+	font: 18px "Century Gothic", Futura, sans-serif;
+	display: flex;
+	flex-flow: row;
+	align-items: center;
+}
+
+.side-bar-info{
+	padding: 20px;
+	font: 14px "Century Gothic", Futura, sans-serif;
+	display: flex;
+	flex-flow: row;
+	align-items: center;
+}

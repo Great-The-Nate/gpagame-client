@@ -2,7 +2,7 @@
   "name": "the-gpa-game",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://great-the-nate.github.io/the-gpa-game",
+  "homepage": "http://gpa.clearhall.dev",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",

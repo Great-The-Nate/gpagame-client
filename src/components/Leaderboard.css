@@ -1,0 +1,85 @@
+.leaderboard {
+	position: absolute;
+	padding: 0;
+	margin: 0;
+	height: 100%;
+	width: 100%;
+	z-index: -1;
+}
+
+.leaderboard-background{
+	position: absolute;
+	top: 67px;
+	padding: 40px;
+	min-height: 100%;
+	width: 100%;
+	background-color: #fafafa;
+	align-content: center;
+	z-index: -2;
+}
+
+.leaderboard-foreground{
+	margin: auto;
+	width: 850px;
+}
+
+#leaderboard-filter{
+	position: relative;
+	left: 615px;
+	bottom: 30px;
+	width: 200px;
+	height: 30px;
+	padding: 13px;
+	font: 14px "Century Gothic", Futura, sans-serif;
+	color: black;
+	background-color: white;
+	border: 1px solid #ddd;
+	border-radius: 15px;
+}
+
+.leaderboard-table-container{
+	margin-top: 0px;
+	padding-top: 20px;
+	padding-right: 20px;
+	padding-left: 20px;
+	padding-bottom: 5px;
+	width: 100%;
+	background-color: white;
+	border-radius: 3px;
+	border: 1px solid #ddd;
+}
+
+.leaderboard-table{
+	border-collapse: collapse;
+	width: 100%;
+}
+
+.leaderboard-table tr:not(:first-child){
+	cursor: pointer;
+}
+.leaderboard-table tr:not(:first-child):hover{
+	background-color: #ddd;
+}
+
+.leaderboard-table th{
+	text-align: left;
+	font-weight: normal;
+	padding: 0px 15px;
+	padding-bottom: 20px;
+
+}
+
+.leaderboard-table td{
+	border-top: 1px solid #ddd;
+	text-align: left;
+	padding: 15px;
+}
+
+.leaderboard-portfolio-close-button {
+	position: absolute;
+	right: 25px;
+	top: 75px;
+	font-size: 32px;
+	color: #212121;
+	cursor: pointer;
+}

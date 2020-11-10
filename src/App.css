@@ -1,0 +1,120 @@
+*, *::before, *::after {
+  box-sizing: inherit;
+  padding: 0;
+  margin: 0;
+}
+
+.game-title {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  height: 66px;
+  width: 196px;
+  border-right: 1px solid #ddd;
+  padding: 21px;
+  font: 20px "Century Gothic", Futura, sans-serif;
+  color: black;
+  text-align: center;
+  background-color: white;
+}
+
+nav hr {
+  display: block;
+  position: fixed;
+  width: 100%;
+  top: 66px;
+  border: 1px inset #ddd;
+}
+
+nav ul {
+  font: 18px "Century Gothic", Futura, sans-serif;
+  background-color: #212121;
+  color: white;
+  height: 66px;
+  position:fixed;
+  top:0;
+  left:195px;
+  right:0;
+  padding: 0 25px;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  list-style-type: none;
+}
+
+nav ul li {
+  color: #f2f2f2;
+  text-align: center;
+  padding: 5px 6px;
+  margin-left: 15px;
+  text-decoration: none;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+nav ul li .current {
+  border-bottom: 2px solid #e0e0e0;
+  text-decoration: none;
+  color: white;
+}
+
+nav ul li :hover {
+  border-bottom: 2px solid #e0e0e0;
+}
+
+nav input[type=text] {
+  position: relative;
+  left: 50px;
+  height: 44px;
+  width: 750px;
+  padding: 6px 15px;
+  margin-top: 8px;
+  margin-bottom: 9px;
+  font: 16px "Century Gothic", Futura, sans-serif;
+  color: white;
+  background-color: #333;
+  border: 1px inset white;
+  border-radius: 5px;
+}
+.navigation-bar input::placeholder {
+  color:white;
+}
+
+.nav-dropdown{
+  position: absolute;
+  right: 20px;
+  cursor: pointer;
+}
+
+.nav-dropdown-button{
+  background-color: #212121;
+  color: white;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-dropdown-content {
+  position: absolute;
+  right: 0px;
+  display: none;
+  background-color: white;
+  min-width: 100px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+.nav-dropdown:hover .nav-dropdown-content {display: block;}
+
+.nav-dropdown-content-item{
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+.nav-dropdown-content-item:hover {
+  background-color: #efefef;
+}

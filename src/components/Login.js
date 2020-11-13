@@ -8,7 +8,7 @@ function Login(props) {
 	function handleLogin(){
 		var xhr = new XMLHttpRequest()
         xhr.addEventListener('load', async () => {
-          	console.log("Server Response:" + xhr.responseText)//status
+          	//console.log("Server Response:" + xhr.responseText)//status
           	if(xhr.status === 200){
           		props.updateToken(JSON.parse(xhr.responseText)["access_token"]);
 				props.getUsers();

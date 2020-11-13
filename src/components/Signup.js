@@ -55,7 +55,7 @@ class Signup extends React.Component {
 		else {
 			var xhr = new XMLHttpRequest()
 			xhr.addEventListener('load', () => {
-			  	console.log("Server Response:" + xhr.responseText)//status
+			  	//console.log("Server Response:" + xhr.responseText)//status
 			  	if(xhr.status === 200){
 			  		const response = JSON.parse(xhr.responseText)
 			  		this.student = response;

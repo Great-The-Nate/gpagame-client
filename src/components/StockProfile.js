@@ -81,7 +81,7 @@ class StockProfile extends React.Component{
 
 		var xhr = new XMLHttpRequest()
         xhr.addEventListener('load', () => {
-            console.log("Server Response:"+xhr.responseText); //status
+            //console.log("Server Response:"+xhr.responseText); //status
             if(xhr.status===200){
             	const response = JSON.parse(xhr.responseText)
             	for(var i=0; i<response.length; i++)

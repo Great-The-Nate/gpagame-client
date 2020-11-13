@@ -83,7 +83,7 @@ class App extends React.Component{
     getUsers(){
         var xhr = new XMLHttpRequest()
         xhr.addEventListener('load', () => {
-            console.log("Server Response:"+xhr.responseText); //status
+            //console.log("Server Response:"+xhr.responseText); //status
             if(xhr.status===200){
                 const response = JSON.parse(xhr.responseText);
                 const users = [];
@@ -94,7 +94,7 @@ class App extends React.Component{
                 }
 
                 //this.state.users = users;
-                console.log(users)
+                //console.log(users)
                 this.setState({users:users})
             }
         })

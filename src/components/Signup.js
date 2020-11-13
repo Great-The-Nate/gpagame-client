@@ -1,9 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import 'font-awesome/css/font-awesome.min.css';
-
 import './Signup.css';
-import { MarketStock } from './Home'
 
 class Signup extends React.Component {
 	constructor(props){
@@ -106,38 +104,29 @@ class Signup extends React.Component {
 		return (
 			<div className="sign-up">
 				<div className="sign-up-background">
-					{this.state.loadingPosition!==6 ?
-						<div style={{height:"100%"}}>
-							{!this.state.loading?
-								<div className="sign-up-foreground">
-									<div className="sign-up-side-bar-title">The GPA Game</div>
+					{!this.state.loading?
+						<div className="sign-up-foreground">
+							<div className="sign-up-side-bar-title">The GPA Game</div>
 
-									<div>Login Information</div>
-									<input id="sign-up-username" type="text" placeholder="Create a Username" autoFocus/>
-									<input id="sign-up-password" type="password" placeholder="Create a Password"/>
-									<input id="sign-up-confirm-password" type="password" placeholder="Confirm Password"/>
-									<hr style={{marginBottom: "50px"}}/>
+							<div>Login Information</div>
+							<input id="sign-up-username" type="text" placeholder="Create a Username" autoFocus/>
+							<input id="sign-up-password" type="password" placeholder="Create a Password"/>
+							<input id="sign-up-confirm-password" type="password" placeholder="Confirm Password"/>
+							<hr style={{marginBottom: "50px"}}/>
 
-									<div>Skyward Credentials</div>
-									<input id="sign-up-skyward-username" type="text" placeholder="Enter Skyward Username"/>
-									<input id="sign-up-skyward-password" type="password" placeholder="Enter Skyward Password"/>
+							<div>Skyward Credentials</div>
+							<input id="sign-up-skyward-username" type="text" placeholder="Enter Skyward Username"/>
+							<input id="sign-up-skyward-password" type="password" placeholder="Enter Skyward Password" onKeyDown={(event)=>{if(event.keyCode===13)document.getElementById('sign-up-button').click()}} />
 
-									<hr/>
-									<button className="sign-up-button" onClick={() => this.handleSignUp()}>Sign Up</button>
-								</div>
-							:
-								<div className="sign-up-loading-foreground">
-									<div style={{fontSize:"24px"}}>Registering...</div>
-									<hr style={{top:"10px", marginBottom:"20px"}}/>
-									{this.makeLoadingList()}
-								</div>
-							}
+							<hr/>
+							<button id="sign-up-button" className="sign-up-button" onClick={() => this.handleSignUp()}>Sign Up</button>
 						</div>
-					:	
-						<div className="sign-up-stock-card-container">
-							<h2>Registration Complete</h2>
-							<MarketStock width={"400px"} student={this.student} onClick={()=>{ this.props.history.push({pathname: '/',}) }}/>
-						</div>					
+					:
+						<div className="sign-up-loading-foreground">
+							<div style={{fontSize:"24px"}}>Registering...</div>
+							<hr style={{top:"10px", marginBottom:"20px"}}/>
+							{this.makeLoadingList()}
+						</div>
 					}
 				</div>
 			</div>

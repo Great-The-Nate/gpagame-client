@@ -31,9 +31,9 @@ function Login(props) {
 					<div className="login-title">The GPA Game</div>
 
 					<input id="login-username" type="text" placeholder="Username" autoFocus/>
-					<input id="login-password"type="password" placeholder="Password"/>
+					<input id="login-password"type="password" placeholder="Password" onKeyDown = {(event) => {if(event.keyCode===13)document.getElementById('login-button').click()}} />
 
-					<button className="login-button" onClick={handleLogin}>Login</button>
+					<button id="login-button" className="login-button" onClick={handleLogin}>Login</button>
 					<hr/>
 					<NavLink className="login-sign-up-button" to='/signup'>Sign Up</NavLink>
 				</div>

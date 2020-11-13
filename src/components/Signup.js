@@ -17,7 +17,7 @@ class Signup extends React.Component {
 	student = null;
 	
 	runWebSocket() {
-		const ws = new WebSocket('wss://ac6d2ac0af5f.ngrok.io/register/status')
+		const ws = new WebSocket('wss://api.gpa.clearhall.dev/register/status')
         ws.onopen = () => {
         	console.log('connected')
         	ws.send(JSON.stringify({username:this.student["username"]}))
@@ -69,7 +69,7 @@ class Signup extends React.Component {
 				else
 					alert("Username Already Exists");
 			})
-			xhr.open('POST', 'https://ac6d2ac0af5f.ngrok.io/register')
+			xhr.open('POST', 'https://api.gpa.clearhall.dev/register')
 			xhr.setRequestHeader('Content-Type', 'application/json')
 			xhr.setRequestHeader('Authorization', 'Basic Y29tLmxvY2FsLnRlc3Q6')
 			xhr.send(JSON.stringify({username:document.getElementById("sign-up-username").value, password:document.getElementById("sign-up-password").value, skywardUsername:document.getElementById("sign-up-skyward-username").value, skywardPassword:document.getElementById("sign-up-skyward-password").value}))
@@ -146,25 +146,3 @@ class Signup extends React.Component {
 }
 
 export default withRouter(Signup);
-
-/*this.props.history.push({
-  pathname: '/',
-})*/
-/*var xhr = new XMLHttpRequest()
-xhr.addEventListener('load', async () => {
-  	console.log("Server Response:" + xhr.responseText)//status
-  	if(xhr.status === 200){
-  		props.updateToken(JSON.parse(xhr.responseText)["authorization"]["access_token"]);
-  		props.getUsers();
-  		await props.getSelf()
-		history.push("/");
-  	}
-	else
-		alert("Sign Up Failed");
-})
-xhr.open('POST', 'https://239bc37982d5.ngrok.io/register')//73.76.126.177:8888/register
-xhr.setRequestHeader('Content-Type', 'application/json')
-xhr.setRequestHeader('Authorization', 'Basic Y29tLmxvY2FsLnRlc3Q6')
-//console.log(JSON.stringify({username:document.getElementById("sign-up-username").value, password:document.getElementById("sign-up-password").value, skywardUsername:document.getElementById("sign-up-skyward-username").value, skywardPassword:document.getElementById("sign-up-skyward-password").value}))
-xhr.send(JSON.stringify({username:document.getElementById("sign-up-username").value, password:document.getElementById("sign-up-password").value, skywardUsername:document.getElementById("sign-up-skyward-username").value, skywardPassword:document.getElementById("sign-up-skyward-password").value}))
-*/

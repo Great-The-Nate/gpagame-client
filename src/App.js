@@ -109,7 +109,7 @@ class App extends React.Component{
                 this.setState({users:users})
             }
         })
-        xhr.open('GET', 'https://ac6d2ac0af5f.ngrok.io/users')
+        xhr.open('GET', 'https://api.gpa.clearhall.dev/users')
         xhr.setRequestHeader('Authorization', 'Bearer '+this.state.authToken)
         xhr.send()
     }
@@ -127,7 +127,7 @@ class App extends React.Component{
                 })
             }
         })
-        xhr.open('GET', 'https://ac6d2ac0af5f.ngrok.io/me')
+        xhr.open('GET', 'https://api.gpa.clearhall.dev/me')
         xhr.setRequestHeader('Authorization', 'Bearer '+this.state.authToken)
         xhr.send()
     }

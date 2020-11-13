@@ -60,7 +60,7 @@ class Portfolio extends React.Component{
             	this.setState({netWorthHistory: netWorthHistory})
             }
         })
-        xhr.open('GET', 'https://ac6d2ac0af5f.ngrok.io/history')
+        xhr.open('GET', 'https://api.gpa.clearhall.dev/history')
         xhr.setRequestHeader('Authorization', 'Bearer '+this.props.authToken)
         xhr.send()
 
@@ -71,7 +71,7 @@ class Portfolio extends React.Component{
 	}
 
 	handlePointHover(text){
-		console.log(text.x);
+		//console.log(text.x);
 		document.getElementById("portfolio-graph-length-bar-point-hover").style.visibility="visible";
 
 		const date = text.x.split("-");

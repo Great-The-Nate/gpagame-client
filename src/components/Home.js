@@ -126,7 +126,7 @@ class Dashboard extends React.Component{
           	this.props.getUsers()
           	await this.props.getSelf()
         })
-        xhr.open('POST', "https://ac6d2ac0af5f.ngrok.io/trades/"+this.state.stockProfileStudent.UID+"?action="+this.state.stockExchangeMode+"&amount="+this.state.stockExchangeAmount)
+        xhr.open('POST', "https://api.gpa.clearhall.dev/trades/"+this.state.stockProfileStudent.UID+"?action="+this.state.stockExchangeMode+"&amount="+this.state.stockExchangeAmount)
         xhr.setRequestHeader('Authorization', 'Bearer '+this.props.authToken)
         xhr.send()
 	}
@@ -208,10 +208,10 @@ class Dashboard extends React.Component{
 			height:String(Math.ceil((this.props.users.length-1)/(stocksPerRow)) * 205 + 100)+"px",
 			gridTemplateColumns: "repeat(auto-fit, "+String(stockWidth)+"px)"
 		}
-		console.log("marketWidth: "+marketWidth)
+		/*console.log("marketWidth: "+marketWidth)
 		console.log("stocks p row: "+stocksPerRow)
 		console.log("stock width: "+stockWidth)
-		console.log("marketheight: "+Math.ceil((this.props.users.length-1)/(stocksPerRow)) * 205)
+		console.log("marketheight: "+Math.ceil((this.props.users.length-1)/(stocksPerRow)) * 205)*/
 
 		this.portfolioStockQuantity = 0;
 		if(this.state.stockProfileStudent!= null)
@@ -411,17 +411,6 @@ class SideBar extends React.Component{
 
 class Home extends React.Component{
 	render(){
-		//console.log(this.props.authToken)
-		//console.log(this.props.users)
-
-		/*var xhr = new XMLHttpRequest()
-        xhr.addEventListener('load', () => {
-            console.log("Server Response:"+xhr.responseText); //status
-        })
-        xhr.open('GET', 'https://239bc37982d5.ngrok.io/history')
-        xhr.setRequestHeader('Authorization', 'Bearer '+this.props.authToken)
-        xhr.send()*/
-
 		return (
 			<div className = "home">
 				<SideBar user={this.props.selfUser}></SideBar>

@@ -18,7 +18,7 @@ function Login(props) {
 			else
 				alert("Login Failed");
         })
-        xhr.open('POST', 'https://ac6d2ac0af5f.ngrok.io/auth/token')
+        xhr.open('POST', 'https://api.gpa.clearhall.dev/auth/token')
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
         xhr.setRequestHeader('Authorization', 'Basic Y29tLmxvY2FsLnRlc3Q6')
         xhr.send("username="+document.getElementById("login-username").innerHTML+"&password="+document.getElementById("login-password").innerHTML+"&grant_type=password")

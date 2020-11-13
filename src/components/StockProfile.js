@@ -90,7 +90,7 @@ class StockProfile extends React.Component{
             	this.setState({stockValueHistory: stockValueHistory})
             }
         })
-        xhr.open('GET', 'https://ac6d2ac0af5f.ngrok.io/history')
+        xhr.open('GET', 'https://api.gpa.clearhall.dev/history')
         xhr.setRequestHeader('Authorization', 'Bearer '+this.props.authToken)
         xhr.send()
 
@@ -101,7 +101,7 @@ class StockProfile extends React.Component{
 	}
 
 	handlePointHover(text){
-		console.log("Hovered Point: "+text.x);
+		//console.log("Hovered Point: "+text.x);
 		document.getElementById("stock-profile-graph-length-bar-point-hover").style.visibility="visible";
 
 		const date = text.x.split("-");

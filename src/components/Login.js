@@ -20,7 +20,7 @@ function Login(props) {
         })
         xhr.open('POST', 'https://api.gpa.clearhall.dev/auth/token')
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
-        xhr.setRequestHeader('Authorization', 'Basic Y29tLmxvY2FsLnRlc3Q6')
+        xhr.setRequestHeader('Authorization', 'Basic ZGV2LmNsZWFyaGFsbC5ncGE6')
         xhr.send("username="+document.getElementById("login-username").innerHTML+"&password="+document.getElementById("login-password").innerHTML+"&grant_type=password")
 	}
 

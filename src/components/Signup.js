@@ -71,7 +71,7 @@ class Signup extends React.Component {
 			})
 			xhr.open('POST', 'https://api.gpa.clearhall.dev/register')
 			xhr.setRequestHeader('Content-Type', 'application/json')
-			xhr.setRequestHeader('Authorization', 'Basic Y29tLmxvY2FsLnRlc3Q6')
+			xhr.setRequestHeader('Authorization', 'Basic ZGV2LmNsZWFyaGFsbC5ncGE6')
 			xhr.send(JSON.stringify({username:document.getElementById("sign-up-username").value, password:document.getElementById("sign-up-password").value, skywardUsername:document.getElementById("sign-up-skyward-username").value, skywardPassword:document.getElementById("sign-up-skyward-password").value}))
 		}
 	}

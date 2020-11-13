@@ -67,18 +67,7 @@ class App extends React.Component{
 
         const users = [
             new User(0, "uid", "Student Name", "Student School", "Student Grade", "https://cdn.discordapp.com/attachments/623245857046790159/730165576185413722/unknown.png", 120000, 140000, 40000, 80000, [{UID:"damian2", quantity:15, initPrice:1000},{UID:"damian3", quantity:15, initPrice:1000}], 100, 80),
-            //new User("b2", "Arvin Sharma", "Clements High School", "12", "https://cdn.discordapp.com/attachments/623245857046790159/730165576185413722/unknown.png", 20000, 70000, [{UID:"a1", quantity:10, initPrice:1400},{UID:"d4", quantity:20, initPrice:1000}]),
-            //new User("c3", "Amogg Venkat", "Clements High School", "12", "https://cdn.discordapp.com/attachments/623245857046790159/730165576185413722/unknown.png", 5000, 45000, [{UID:"b2", quantity:10, initPrice:1000}]),
-            //new User("d4", "Jason Lee", "Elkins High School", "11", "https://cdn.discordapp.com/attachments/623245857046790159/730165576185413722/unknown.png", 1000, 19000, [{UID:"c3", quantity:15, initPrice:1200}])
         ];
-        //const selfUID = "a1";
-        //var selfUser = users[0];
-        /*for(const user in users)
-            if(user.UID===selfUID){
-                selfUser=user;
-                break;
-            }
-        */
         this.state={
             selfUID: "",
             selfUser: users[0],
@@ -100,7 +89,7 @@ class App extends React.Component{
                 const users = [];
                 for(var i=0; i<response.length; i++){
                     if(response[i]["initialized"]){
-                        users.push(new User(response[i]["id"], response[i]["username"], response[i]["name"], response[i]["schoolName"], response[i]["grade"], response[i]["imageURL"], 10000, 120000, response[i]["availableFunds"], 0, response[i]["investments"], response[i]["stockPrice"], 80))
+                        users.push(new User(response[i]["id"], response[i]["username"], response[i]["name"], response[i]["schoolName"], response[i]["grade"], response[i]["imageURL"], 10000, 10000, response[i]["availableFunds"], 0, response[i]["investments"], response[i]["stockPrice"], 80))
                     }
                 }
 
@@ -123,7 +112,7 @@ class App extends React.Component{
 
                 this.setState({
                     selfUID: response["username"],
-                    selfUser: new User(response["id"], response["username"], response["name"], response["schoolName"], response["grade"], response["imageURL"], 10000, 10000, response["availableFunds"], 80, response["investments"], response["stockPrice"], 80)
+                    selfUser: new User(response["id"], response["username"], response["name"], response["schoolName"], response["grade"], response["imageURL"], 10000, 10000, response["availableFunds"], 0, response["investments"], response["stockPrice"], 80)
                 })
             }
         })
@@ -157,6 +146,7 @@ const Navigation = () => (
                 <button className="nav-dropdown-button"><i className="fa fa-bars" aria-hidden="true"/></button>
                 <div className="nav-dropdown-content">
                     <NavLink className="nav-dropdown-content-item" exact activeClassName="current" to='/faq'>FAQ</NavLink>
+                    <div className="nav-dropdown-content-item" onClick={() => {window.location.reload(false);}}>Log Out</div>
                 </div>
             </div>
         </ul>

@@ -11,8 +11,9 @@ function FAQ() {
 		"Who can make an account?", "At the moment, any student in Fort Bend ISD can make a GPA Game account.",
 		"What data do you store?", "We store basic student information, such as your name, grade, and the school you attend, in addition to the Skyward credentials you initially provide us. We use, but do not store, your assignment grades, which are used to calculate your stock value.",
 		"What's the point of The GPA Game?", "idk man whats the point of life?",
-		"Is the GPA Game affiliated with Fort Bend ISD in any way?", "No, this is a completely unofficial student project made for fun. :)",
-		"How can we contact you if we have any other questions?", "You can email us at *insert gpa stocks email here* or find us in the hallway at school, we’re seniors at Clements High School."
+		"Is The GPA Game affiliated with Fort Bend ISD in any way?", "No, this is a completely unofficial student project made for fun. :)",
+		"How can we contact you if we have any other questions?", "You can email us at *insert gpa stocks email here* or find us in the hallway at school, we’re seniors at Clements High School.",
+		//"What should I do if I find something that isn't working?", "It helps us a lot if you let us know if something isn't working so we can fix it as soon as possible. Things such as: Net Worth, the Net Worth Graph, Portfolio Values, and Schedules have not been implemented yet so we know they don't work, but if you find anything else feel free to let us know."
 	];
 
 

@@ -102,7 +102,7 @@ nav input[type=text] {
   right: 0px;
   display: none;
   background-color: white;
-  min-width: 100px;
+  width: 110px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   border: 1px solid #ddd;
   border-radius: 5px;

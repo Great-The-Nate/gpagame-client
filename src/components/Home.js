@@ -10,7 +10,7 @@ export class MarketStock extends React.Component{
 		const student = this.props.student;
 
 		const changeAmount= student.stockValue-student.pastStockValue;
-		const changePercent= changeAmount/student.pastStockValue;
+		const changePercent= changeAmount/student.pastStockValue*100;
 
 		var changeColor="black";
 		var changeText="";
@@ -58,8 +58,7 @@ class SortingBarButton extends React.Component{
 class Dashboard extends React.Component{
 	constructor(props){
 		super(props);
-
-		this.props.users.sort((a,b)=> (b.changePercent - a.changePercent));
+		
 		this.state={
 			activeSortButton: "change",
 			sortDirection: "down", //down = decreasing eg (decreasing change -> highest change at top)
@@ -121,7 +120,7 @@ class Dashboard extends React.Component{
 	handleStockTrade(){
 		var xhr = new XMLHttpRequest()
         xhr.addEventListener('load', async () => {
-          	console.log("Server Response:" + xhr.responseText)//status
+          	//console.log("Server Response:" + xhr.responseText)//status
           	this.setState({stockExchangeAmount:""})
           	this.props.getUsers()
           	await this.props.getSelf()
@@ -327,11 +326,11 @@ class SideBarInfo extends React.Component{
 		var valueColor = "black";
 		if(((title === "Profit/Loss") || (title === "Gain/Loss ($)")) && value < 0){
 			valueColor="red";
-			value="-$"+numberWithCommas(value.toFixed()).slice(1);
+			value="-$"+numberWithCommas(value.toFixed(2)).slice(1);
 		}
 		else if(((title === "Profit/Loss") || (title === "Gain/Loss ($)")) && value > 0){
 			valueColor="green";
-			value="$"+numberWithCommas(value.toFixed());
+			value="$"+numberWithCommas(value.toFixed(2));
 		}
 		else if(title === "Gain/Loss (%)" && value < 0){
 			valueColor="red";
@@ -378,7 +377,7 @@ class SideBar extends React.Component{
 
 		const profitLoss = this.props.user.netWorth-this.props.user.pastNetWorth
 		const stockChangeAmount = this.props.user.stockValue-this.props.user.pastStockValue;
-		const stockChangePercent = stockChangeAmount/this.props.user.pastStockValue;
+		const stockChangePercent = stockChangeAmount/this.props.user.pastStockValue*100;
 
 		return (
 			<div className = "side-bar" style={{height: sideBarHeight}}>

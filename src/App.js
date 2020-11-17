@@ -89,11 +89,12 @@ class App extends React.Component{
                 const users = [];
                 for(var i=0; i<response.length; i++){
                     if(response[i]["initialized"]){
-                        users.push(new User(response[i]["id"], response[i]["username"], response[i]["name"], response[i]["schoolName"], response[i]["grade"], response[i]["imageURL"], 10000, 10000, response[i]["availableFunds"], 0, response[i]["investments"], response[i]["stockPrice"], 80))
+                        users.push(new User(response[i]["id"], response[i]["username"], response[i]["name"], response[i]["schoolName"], response[i]["grade"], "https://cdn.discordapp.com/attachments/770520394721525760/778126032682352660/unknown.png", 10000, 10000, response[i]["availableFunds"], 0, response[i]["investments"], response[i]["stockPrice"], 80))
                     }
                 }
 
                 //this.state.users = users;
+                users.sort((a,b)=> ((b.stockValue-b.pastStockValue)-(a.stockValue-a.pastStockValue)));
                 //console.log(users)
                 this.setState({users:users})
             }
@@ -112,7 +113,7 @@ class App extends React.Component{
 
                 this.setState({
                     selfUID: response["username"],
-                    selfUser: new User(response["id"], response["username"], response["name"], response["schoolName"], response["grade"], response["imageURL"], 10000, 10000, response["availableFunds"], 0, response["investments"], response["stockPrice"], 80)
+                    selfUser: new User(response["id"], response["username"], response["name"], response["schoolName"], response["grade"], "https://cdn.discordapp.com/attachments/770520394721525760/778126032682352660/unknown.png", 10000, 10000, response["availableFunds"], 0, response["investments"], response["stockPrice"], 80)
                 })
             }
         })

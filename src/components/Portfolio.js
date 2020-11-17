@@ -55,7 +55,7 @@ class Portfolio extends React.Component{
             if(xhr.status===200){
             	const response = JSON.parse(xhr.responseText)
             	for(var i=0; i<response.length; i++)
-            		netWorthHistory.push({x:response[i]["time"].slice(0,10),y:response[i]["stockPrice"]})
+            		//netWorthHistory.push({x:response[i]["time"].slice(0,10),y:response[i]["stockPrice"]})
 
             	this.setState({netWorthHistory: netWorthHistory})
             }

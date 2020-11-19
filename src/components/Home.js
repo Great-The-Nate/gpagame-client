@@ -58,7 +58,8 @@ class SortingBarButton extends React.Component{
 class Dashboard extends React.Component{
 	constructor(props){
 		super(props);
-		
+		this.props.users.sort((a,b)=> ((b.stockValue-b.pastStockValue)-(a.stockValue-a.pastStockValue)));
+
 		this.state={
 			activeSortButton: "change",
 			sortDirection: "down", //down = decreasing eg (decreasing change -> highest change at top)

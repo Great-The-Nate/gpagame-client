@@ -21,7 +21,7 @@ class Leaderboard extends React.Component{
 	constructor(props){
 		super(props);
 
-		this.props.users.sort((a,b)=> (a.netWorth - b.netWorth));
+		this.props.users.sort((a,b)=> (b.netWorth - a.netWorth));
 		for(var i =0; i<this.props.users.length; i++){
 			this.props.users[i].netWorthRank=i+1;
 		}
@@ -34,7 +34,7 @@ class Leaderboard extends React.Component{
 	}
 
 	leaderboardItemClicked(student){
-		console.log(student);
+		//console.log(student);
 		this.setState({
 			showPortfolio:true,
 			showPortfolioStudent: student,

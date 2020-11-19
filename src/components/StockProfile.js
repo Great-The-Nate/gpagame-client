@@ -78,7 +78,6 @@ class StockProfile extends React.Component{
 		super(props);
 
 		const stockValueHistory = new Array();
-
 		var xhr = new XMLHttpRequest()
         xhr.addEventListener('load', () => {
             //console.log("Server Response:"+xhr.responseText); //status
@@ -90,7 +89,7 @@ class StockProfile extends React.Component{
             	this.setState({stockValueHistory: stockValueHistory})
             }
         })
-        xhr.open('GET', 'https://api.gpa.clearhall.dev/history')
+        xhr.open('GET', 'https://api.gpa.clearhall.dev/history/'+this.props.selfUser.UID)
         xhr.setRequestHeader('Authorization', 'Bearer '+this.props.authToken)
         xhr.send()
 
@@ -177,7 +176,7 @@ class StockProfile extends React.Component{
 						<div className="stock-profile-graph" onMouseOut={()=>document.getElementById("stock-profile-graph-length-bar-point-hover").style.visibility="hidden"}>
 							<LineChart 
 		                        width={730}
-		                        height={400}
+		                        height={350}
 		                        hideXLabel={true}
 		                        hideYLabel={true}
 		                        hideXAxis={true}

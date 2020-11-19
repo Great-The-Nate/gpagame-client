@@ -246,7 +246,7 @@ class Dashboard extends React.Component{
 				</div>
 			:
 				<div>
-					<StockProfile selfUser={this.state.stockProfileStudent}/>
+					<StockProfile selfUser={this.state.stockProfileStudent} authToken={this.props.authToken}/>
 					<div className="home-stock-profile-close-button" onClick={()=>this.setState({showStockProfile:false})}>
 						<i className="fa fa-times"/>
 					</div>
@@ -381,7 +381,7 @@ class SideBar extends React.Component{
 
 		return (
 			<div className = "side-bar" style={{height: sideBarHeight}}>
-				<div style={{position:"absolute", top: "0px", left:"0px", width: "195px", height:"80px", "zIndex":"2"}} onClick={()=> {this.setState({showEasterEgg:this.state.showEasterEgg+1})}}/>
+				<div style={{position:"absolute", top: "0px", left:"0px", width: "194px", height:"80px", "zIndex":"2"}} onClick={()=> {this.setState({showEasterEgg:this.state.showEasterEgg+1})}}/>
 				
 				<div className = "side-bar-student-name">
 					<i className="fa fa-user-circle" style={{fontSize:"26px"}}></i>

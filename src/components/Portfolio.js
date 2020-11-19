@@ -48,10 +48,9 @@ class Portfolio extends React.Component{
 		super(props);
 
 		const netWorthHistory = new Array();
-
 		var xhr = new XMLHttpRequest()
         xhr.addEventListener('load', () => {
-            console.log("Server Response:"+xhr.responseText); //status
+            //console.log("Server Response:"+xhr.responseText); //status
             if(xhr.status===200){
             	const response = JSON.parse(xhr.responseText)
             	for(var i=0; i<response.length; i++)
@@ -64,9 +63,34 @@ class Portfolio extends React.Component{
         xhr.setRequestHeader('Authorization', 'Bearer '+this.props.authToken)
         xhr.send()
 
+        const portfolioStocks = [];
+        for(var i =0; i<this.props.selfUser.portfolioStocks.length; i++){
+        	if(this.props.selfUser.portfolioStocks[i]["shareCount"]>0)
+        		portfolioStocks.push(this.props.selfUser.portfolioStocks[i]);
+        	else{
+        		var count = this.props.selfUser.portfolioStocks[i]["shareCount"]*-1;
+        		const id = this.props.selfUser.portfolioStocks[i]["targetUser"]["id"];
+        		var k =portfolioStocks.length-1;
+        		while(count>0 && k>=0){
+        			if(portfolioStocks[k]["targetUser"]["id"]===id){
+        				if(portfolioStocks[k]["shareCount"]>count){
+        					portfolioStocks[k]["shareCount"]-=count;
+        					count=0;
+        				}
+        				else{
+        					count-=portfolioStocks[k]["shareCount"];
+        					portfolioStocks.splice(k,1);
+        				}
+        			}
+        			k--;
+        		}
+        	}
+        }
+
 		this.state={
         	activeGraphLengthButton:"week",
         	netWorthHistory: netWorthHistory,
+        	portfolioStocks: portfolioStocks
 		}
 	}
 
@@ -82,20 +106,20 @@ class Portfolio extends React.Component{
 	createStockList(){ //TODO: OPTIMIZE
 		let list = []; 
 		var totalChangeAmount = 0;
-		for(var i=0; i<this.props.selfUser.portfolioStocks.length; i++){
-			const ID = this.props.selfUser.portfolioStocks[i]["targetUser"]["id"];
+		for(var i=0; i<this.state.portfolioStocks.length; i++){
+			const ID = this.state.portfolioStocks[i]["targetUser"]["id"];
 			for(var j=0; j<this.props.users.length; j++){ //search users list to find pointer to correct user using uid
 				
 				if(this.props.users[j].ID === ID){
 					const user = this.props.users[j];
 
-					const initialTotal = (this.props.selfUser.portfolioStocks[i]["stockPriceWhenBought"] * this.props.selfUser.portfolioStocks[i]["shareCount"]).toFixed(2);
-					const currentTotal = (user.stockValue * this.props.selfUser.portfolioStocks[i]["shareCount"]).toFixed(2);
+					const initialTotal = (this.state.portfolioStocks[i]["stockPriceWhenBought"] * this.state.portfolioStocks[i]["shareCount"]).toFixed(2);
+					const currentTotal = (user.stockValue * this.state.portfolioStocks[i]["shareCount"]).toFixed(2);
 					const changeAmount = currentTotal - initialTotal;
 
 					totalChangeAmount = totalChangeAmount + changeAmount;
 
-					list.push(<StockListItem studentStockInfo={this.props.selfUser.portfolioStocks[i]} student={user} initialTotal={initialTotal} currentTotal={currentTotal} changeAmount={changeAmount}/>);
+					list.push(<StockListItem studentStockInfo={this.state.portfolioStocks[i]} student={user} initialTotal={initialTotal} currentTotal={currentTotal} changeAmount={changeAmount}/>);
 					break;
 				}
 			}

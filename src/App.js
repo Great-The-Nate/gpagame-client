@@ -65,9 +65,7 @@ class App extends React.Component{
     constructor(props){
         super(props);
 
-        const users = [
-            new User(0, "uid", "Student Name", "Student School", "Student Grade", "https://cdn.discordapp.com/attachments/623245857046790159/730165576185413722/unknown.png", 120000, 140000, 40000, 80000, [{UID:"damian2", quantity:15, initPrice:1000},{UID:"damian3", quantity:15, initPrice:1000}], 100, 80),
-        ];
+        const users = [new User(0, "uid", "", "", "", "", 0, 0, 0, 0, [], 0, 0)];
         this.state={
             selfUID: "",
             selfUser: users[0],
@@ -81,27 +79,39 @@ class App extends React.Component{
     }
 
     getUsers(){
-        var xhr = new XMLHttpRequest()
-        xhr.addEventListener('load', () => {
-            //console.log("Server Response:"+xhr.responseText); //status
-            if(xhr.status===200){
-                const response = JSON.parse(xhr.responseText);
-                const users = [];
-                for(var i=0; i<response.length; i++){
-                    if(response[i]["initialized"]){
-                        users.push(new User(response[i]["id"], response[i]["username"], response[i]["name"], response[i]["schoolName"], response[i]["grade"], "https://cdn.discordapp.com/attachments/770520394721525760/778126032682352660/unknown.png", 10000, 10000, response[i]["availableFunds"], 0, response[i]["investments"], response[i]["stockPrice"], 80))
-                    }
-                }
+        var req = new XMLHttpRequest()
+        req.addEventListener('load', ()  => {
+            //console.log(req.responseText);
+            if(req.status===200){
+                const netWorths = JSON.parse(req.responseText);
 
-                //this.state.users = users;
-                users.sort((a,b)=> ((b.stockValue-b.pastStockValue)-(a.stockValue-a.pastStockValue)));
-                //console.log(users)
-                this.setState({users:users})
+                var xhr = new XMLHttpRequest()
+                xhr.addEventListener('load', () => {
+                    //console.log("Server Response:"+xhr.responseText); //status
+                    if(xhr.status===200){
+                        const response = JSON.parse(xhr.responseText);
+                        const users = [];
+                        for(var i=0; i<response.length; i++){
+                            if(response[i]["initialized"]){
+                                const netWorth = netWorths[response[i]["username"]];
+                                users.push(new User(response[i]["id"], response[i]["username"], response[i]["name"], response[i]["schoolName"], response[i]["grade"], "https://cdn.discordapp.com/attachments/770520394721525760/778126032682352660/unknown.png", netWorth, 10000, response[i]["availableFunds"], (netWorth-response[i]["availableFunds"]), response[i]["investments"], response[i]["stockPrice"], 80))
+                            }
+                        }
+
+                        //this.state.users = users;
+                        users.sort((a,b)=> ((b.stockValue-b.pastStockValue)-(a.stockValue-a.pastStockValue)));
+                        //console.log(users)
+                        this.setState({users:users})
+                    }
+                })
+                xhr.open('GET', 'https://api.gpa.clearhall.dev/users')
+                xhr.setRequestHeader('Authorization', 'Bearer '+this.state.authToken)
+                xhr.send()
             }
         })
-        xhr.open('GET', 'https://api.gpa.clearhall.dev/users')
-        xhr.setRequestHeader('Authorization', 'Bearer '+this.state.authToken)
-        xhr.send()
+        req.open('GET', 'https://api.gpa.clearhall.dev/worth');
+        req.setRequestHeader('Authorization', 'Bearer '+this.state.authToken)
+        req.send()
     }
 
     getSelf(){
@@ -111,10 +121,22 @@ class App extends React.Component{
             if(xhr.status===200){
                 const response = JSON.parse(xhr.responseText);
 
-                this.setState({
-                    selfUID: response["username"],
-                    selfUser: new User(response["id"], response["username"], response["name"], response["schoolName"], response["grade"], "https://cdn.discordapp.com/attachments/770520394721525760/778126032682352660/unknown.png", 10000, 10000, response["availableFunds"], 0, response["investments"], response["stockPrice"], 80)
+                var netWorth=10000;
+                var req = new XMLHttpRequest()
+                req.addEventListener('load', () => {
+                    //console.log('self: '+req.responseText);
+                    if(req.status===200){
+                        netWorth = JSON.parse(req.responseText);
+
+                        this.setState({
+                            selfUID: response["username"],
+                            selfUser: new User(response["id"], response["username"], response["name"], response["schoolName"], response["grade"], "https://cdn.discordapp.com/attachments/770520394721525760/778126032682352660/unknown.png", netWorth, 10000, response["availableFunds"], (netWorth-response["availableFunds"]), response["investments"], response["stockPrice"], 80)
+                        })
+                    }
                 })
+                req.open('GET', 'https://api.gpa.clearhall.dev/worth/'+response["username"])
+                req.setRequestHeader('Authorization', 'Bearer '+this.state.authToken)
+                req.send()
             }
         })
         xhr.open('GET', 'https://api.gpa.clearhall.dev/me')

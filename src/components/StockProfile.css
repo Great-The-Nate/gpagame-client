@@ -113,6 +113,10 @@
 }
 
 .stock-profile-classes li {
+	width: 220px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 	padding: 11px;
 	border-bottom: 1px solid #ddd;
 	text-decoration: none;

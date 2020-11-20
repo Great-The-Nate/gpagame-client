@@ -83,3 +83,11 @@
 	color: #212121;
 	cursor: pointer;
 }
+.leaderboard-portfolio-leaderboard-button{
+	position: fixed;
+	left: 550px;
+	top: 25px;
+	width: 120px;
+	height: 20px;
+	cursor: pointer;
+}

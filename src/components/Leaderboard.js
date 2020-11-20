@@ -64,36 +64,40 @@ class Leaderboard extends React.Component{
 
 	render() {
 		return (
-			<div className="leaderboard">
-			{!this.state.showPortfolio ?	
-				<div className="leaderboard-background">
-					<div className="leaderboard-foreground">
-						<h2>Net Worth Leaderboard</h2>
-						<p>This leaderboard shows all players ranked by their Net Worth</p>
-						<input id="leaderboard-filter" type="text" placeholder="Filter" onInput={() => this.setState({nameFilter:document.getElementById("leaderboard-filter").value})}/>
+			<div>
+				<div className="leaderboard">
+				{!this.state.showPortfolio ?	
+					<div className="leaderboard-background">
+						<div className="leaderboard-foreground">
+							<h2>Net Worth Leaderboard</h2>
+							<p>This leaderboard shows all players ranked by their Net Worth</p>
+							<input id="leaderboard-filter" type="text" placeholder="Filter" onInput={() => this.setState({nameFilter:document.getElementById("leaderboard-filter").value})}/>
 
-						<div className="leaderboard-table-container">
-							<table className="leaderboard-table">
-								<tr>
-									<th>Rank</th>
-									<th>Name</th>
-									<th>School</th>
-									<th>Grade</th>
-									<th style={{width: ""}}>Net Worth</th>
-								</tr>
-								{this.createLeaderboard()}
-							</table>
+							<div className="leaderboard-table-container">
+								<table className="leaderboard-table">
+									<tr>
+										<th>Rank</th>
+										<th>Name</th>
+										<th>School</th>
+										<th>Grade</th>
+										<th style={{width: ""}}>Net Worth</th>
+									</tr>
+									{this.createLeaderboard()}
+								</table>
+							</div>
 						</div>
 					</div>
+				:
+					<div>
+						<Portfolio selfUser={this.state.showPortfolioStudent} users={this.props.users} authToken={this.props.authToken}/>
+						
+						<div className="leaderboard-portfolio-close-button" onClick={()=>this.setState({showPortfolio:false})}>
+							<i className="fa fa-times"/>
+						</div>
+					</div>		
+				}
 				</div>
-			:
-				<div>
-					<Portfolio selfUser={this.state.showPortfolioStudent} users={this.props.users} authToken={this.props.authToken}/>
-					<div className="leaderboard-portfolio-close-button" onClick={()=>this.setState({showPortfolio:false})}>
-						<i className="fa fa-times"/>
-					</div>
-				</div>		
-			}	
+				{this.state.showPortfolio?<div className="leaderboard-portfolio-leaderboard-button" onClick={()=>this.setState({showPortfolio:false})}/>:<div/>}
 			</div>
 		);
 	}

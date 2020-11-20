@@ -12,7 +12,7 @@ import Login from './components/Login'
 import Signup from './components/Signup'
 
 export class User{ //add networthgraphpoints, stockvaluegraphpoints, and schedule to parameters
-    constructor(ID, UID, name, school, grade, pictureLink, netWorth, pastNetWorth, availableFunds, portfolioValue, portfolioStocks, stockValue, pastStockValue){
+    constructor(ID, UID, name, school, grade, pictureLink, netWorth, pastNetWorth, availableFunds, portfolioValue, portfolioStocks, stockValue, pastStockValue, schedule){
         this.ID = ID;
         this.UID = UID;
         this.name = name;
@@ -22,15 +22,19 @@ export class User{ //add networthgraphpoints, stockvaluegraphpoints, and schedul
 
         this.netWorth = netWorth; //need
         this.pastNetWorth = pastNetWorth; //need + net Worth history
-        this.netWorthGraphPoints = [{x: "2020-06-30", y: 100000}, {x: "2020-07-01", y: 70000}, {x: "2020-07-02", y: 20000}, {x: "2020-07-03", y: 60000}, {x: "2020-07-04", y: 70000}, {x: "2020-07-05", y: 90000}, {x: "2020-07-06", y: 100000}, {x: "2020-07-07", y: 110000}, {x: "2020-07-08", y: 140000}, {x: "2020-07-09", y: 90000}, {x: "2020-07-10", y: 74000}, {x: "2020-07-11", y: 105000}, {x: "2020-07-12", y: 93000}, {x: "2020-07-13", y:120000}]; 
         this.availableFunds = availableFunds;
         this.portfolioValue = portfolioValue; //need
         this.portfolioStocks = portfolioStocks;
 
         this.stockValue = stockValue;
         this.pastStockValue = pastStockValue; //need
-        this.stockValueGraphPoints = [{x: "2020-06-30", y: 1000}, {x: "2020-07-01", y: 700}, {x: "2020-07-02", y: 200}, {x: "2020-07-03", y: 600}, {x: "2020-07-04", y: 700}, {x: "2020-07-05", y: 900}, {x: "2020-07-06", y: 1000}, {x: "2020-07-07", y: 1100}, {x: "2020-07-08", y: 1400}, {x: "2020-07-09", y: 900}, {x: "2020-07-10", y: 740}, {x: "2020-07-11", y: 1050}, {x: "2020-07-12", y: 930}, {x: "2020-07-13", y:1200}];
-        this.schedule = ["AP Physics 1", "AP Chemisty", "AP English 3", "Physical Education", "AP Computer Science 2", "AP Calculus BC", "United States History"]; //need
+
+        this.schedule = ["Class 1", "Class 2", "Class 3", "Class 4", "Class 5", "Class 6", "Class 7"];
+        if(schedule!=null){
+            this.schedule=schedule.split(":::")
+            while(this.schedule.length<7)
+                this.schedule.push("Off Campus");
+        }
 
         this.netWorthRank = 0;
     }
@@ -94,7 +98,7 @@ class App extends React.Component{
                         for(var i=0; i<response.length; i++){
                             if(response[i]["initialized"]){
                                 const netWorth = netWorths[response[i]["username"]];
-                                users.push(new User(response[i]["id"], response[i]["username"], response[i]["name"], response[i]["schoolName"], response[i]["grade"], "https://cdn.discordapp.com/attachments/770520394721525760/778126032682352660/unknown.png", netWorth, 10000, response[i]["availableFunds"], (netWorth-response[i]["availableFunds"]), response[i]["investments"], response[i]["stockPrice"], 80))
+                                users.push(new User(response[i]["id"], response[i]["username"], response[i]["name"], response[i]["schoolName"], response[i]["grade"], "https://cdn.discordapp.com/attachments/770520394721525760/778126032682352660/unknown.png", netWorth, 10000, response[i]["availableFunds"], (netWorth-response[i]["availableFunds"]), response[i]["investments"], response[i]["stockPrice"], 80, response[i]["schedule"]))
                             }
                         }
 
@@ -130,7 +134,7 @@ class App extends React.Component{
 
                         this.setState({
                             selfUID: response["username"],
-                            selfUser: new User(response["id"], response["username"], response["name"], response["schoolName"], response["grade"], "https://cdn.discordapp.com/attachments/770520394721525760/778126032682352660/unknown.png", netWorth, 10000, response["availableFunds"], (netWorth-response["availableFunds"]), response["investments"], response["stockPrice"], 80)
+                            selfUser: new User(response["id"], response["username"], response["name"], response["schoolName"], response["grade"], "https://cdn.discordapp.com/attachments/770520394721525760/778126032682352660/unknown.png", netWorth, 10000, response["availableFunds"], (netWorth-response["availableFunds"]), response["investments"], response["stockPrice"], 80, response["schedule"])
                         })
                     }
                 })

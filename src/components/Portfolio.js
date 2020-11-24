@@ -1,5 +1,6 @@
 import React from 'react';
 import LineChart from 'react-linechart';
+import d3 from "d3";
 import {StockProfileAbout} from './StockProfile';
 import {copy, makeSchoolAcronym, numberWithCommas} from '../App';
 import './Portfolio.css';
@@ -54,7 +55,7 @@ class Portfolio extends React.Component{
             if(xhr.status===200){
             	const response = JSON.parse(xhr.responseText)
             	for(var i=0; i<response.length; i++)
-            		//netWorthHistory.push({x:response[i]["time"].slice(0,10),y:response[i]["stockPrice"]})
+            		//netWorthHistory.push({x:response[i]["time"].slice(0,19),y:response[i]["stockPrice"]})
 
             	this.setState({netWorthHistory: netWorthHistory})
             }
@@ -98,7 +99,7 @@ class Portfolio extends React.Component{
 		//console.log(text.x);
 		document.getElementById("portfolio-graph-length-bar-point-hover").style.visibility="visible";
 
-		const date = text.x.split("-");
+		const date = text.x.slice(0,10).split("-");
 		document.getElementById("portfolio-graph-length-bar-point-hover-date").innerHTML="Date: "+date[1]+"-"+date[2]+"-"+date[0];
 		document.getElementById("portfolio-graph-length-bar-point-hover-value").innerHTML="Net Worth: $"+numberWithCommas(text.y.toFixed(2));
 	}
@@ -182,6 +183,7 @@ class Portfolio extends React.Component{
 			                        hideXAxis={true}
 			                        hideYAxis={true}
 			                        isDate={true}
+			                        xParser={d3.time.format("%Y-%m-%dT%H:%M:%S").parse}
 			                        onPointHover={(text) => this.handlePointHover(text)}
 			                        data={graphData}
 			                    />

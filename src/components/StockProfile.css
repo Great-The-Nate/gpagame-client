@@ -99,7 +99,7 @@
 	background-color: white;
 	border: 1px solid #ddd;
 	border-radius: 5px;
-	padding: 20px;
+	padding: 19px 0px;
 	font: 24px "Century Gothic", Futura, sans-serif;
 	display: flex;
 	flex-flow: column;
@@ -107,9 +107,27 @@
 }
 
 .stock-profile-classes hr {
-	width: 100%;
+	width: 240px;
 	position: relative;
 	top: -5px;
+}
+
+.stock-profile-classes ul{
+	overflow-y: scroll;
+	width: 100%;
+	padding-left: 33px;
+	margin-right: 12px;
+}
+.stock-profile-classes ul::-webkit-scrollbar {
+  width: 10px;
+}
+.stock-profile-classes ul::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: white;
+}
+.stock-profile-classes ul::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #e3e3e3;
 }
 
 .stock-profile-classes li {
@@ -123,6 +141,9 @@
 	list-style-type: none;
 	font: 18px "Century Gothic", Futura, sans-serif;
 	text-align: center;
+}
+.stock-profile-classes li:last-child {
+	border-bottom: none;
 }
 
 .stock-profile-foreground{

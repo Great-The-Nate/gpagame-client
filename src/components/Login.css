@@ -18,6 +18,15 @@
 	align-content: center;
 }
 
+.login-faq-link{
+	font-size: 28px;
+	color: black;
+	position: absolute;
+	right: 35px;
+	top: 25px;
+	cursor: pointer;
+}
+
 .login-foreground{
 	padding: 20px;
 	height:	435px;
@@ -42,7 +51,15 @@
 	font: 26px "Century Gothic", Futura, sans-serif;
 	color: black;
 	text-align: center;
-	margin-bottom: 30px;
+	/*margin-bottom: 30px;*/
+}
+.login-title-beta{
+	position: relative;
+	bottom: 15px;
+	left: 65px;
+	padding: 5px;
+	background-color: white;
+	z-index: 1;
 }
 
 .login-foreground input{
@@ -92,4 +109,14 @@
 	background-color: #e0e0e0;
 	color: #2e2e2e;
 	margin-top: 60px;
+}
+
+.login-faq-close-button{
+	position: absolute;
+	right: 25px;
+	top: 25px;
+	font-size: 32px;
+	color: #212121;
+	cursor: pointer;
+	z-index: 1;
 }

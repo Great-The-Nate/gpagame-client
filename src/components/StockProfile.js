@@ -1,5 +1,6 @@
 import React from 'react';
 import LineChart from 'react-linechart';
+import d3 from "d3";
 import './StockProfile.css';
 import {numberWithCommas, copy} from '../App';
 
@@ -80,12 +81,12 @@ class StockProfile extends React.Component{
 		const stockValueHistory = new Array();
 		var xhr = new XMLHttpRequest()
         xhr.addEventListener('load', () => {
-            //console.log("Server Response:"+xhr.responseText); //status
+            console.log("Server Response:"+xhr.responseText); //status
             if(xhr.status===200){
             	const response = JSON.parse(xhr.responseText)
             	for(var i=0; i<response.length; i++)
-            		stockValueHistory.push({x:response[i]["time"].slice(0,10),y:response[i]["stockPrice"]})
-
+            		stockValueHistory.push({x:response[i]["time"].slice(0,19),y:response[i]["stockPrice"]})//.slice(0,10)
+            	console.log(stockValueHistory)
             	this.setState({stockValueHistory: stockValueHistory})
             }
         })
@@ -103,9 +104,16 @@ class StockProfile extends React.Component{
 		//console.log("Hovered Point: "+text.x);
 		document.getElementById("stock-profile-graph-length-bar-point-hover").style.visibility="visible";
 
-		const date = text.x.split("-");
+		const date = text.x.slice(0,10).split("-");
 		document.getElementById("stock-profile-graph-length-bar-point-hover-date").innerHTML="Date: "+date[1]+"-"+date[2]+"-"+date[0];
 		document.getElementById("stock-profile-graph-length-bar-point-hover-value").innerHTML="Price: $"+numberWithCommas(text.y.toFixed(2));
+	}
+
+	makeSchedule(){
+		let list = [];
+		for(var i=0; i<this.props.selfUser.schedule.length; i++)
+			list.push(<li>{this.props.selfUser.schedule[i]}</li>);
+		return list;
 	}
 
 	render() {
@@ -152,15 +160,7 @@ class StockProfile extends React.Component{
 						<div className="stock-profile-classes">
 							<div style={{marginBottom: "15px"}}>Schedule</div>
 							<hr/>
-							<ul>
-								<li>{user.schedule[0]}</li>
-								<li>{user.schedule[1]}</li>
-								<li>{user.schedule[2]}</li>
-								<li>{user.schedule[3]}</li>
-								<li>{user.schedule[4]}</li>
-								<li>{user.schedule[5]}</li>
-								<li>{user.schedule[6]}</li>
-							</ul>
+							<ul>{this.makeSchedule()}</ul>
 						</div>
 					</div>
 
@@ -182,6 +182,7 @@ class StockProfile extends React.Component{
 		                        hideXAxis={true}
 		                        hideYAxis={true}
 		                        isDate={true}
+		                        xParser={d3.time.format("%Y-%m-%dT%H:%M:%S").parse}
 		                        onPointHover={(text) => this.handlePointHover(text)}
 		                        data={graphData}
 		                    />

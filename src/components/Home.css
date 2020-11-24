@@ -118,7 +118,7 @@ body {
 
 .stock-exchange-panel {
 	position: fixed;
-	left: 1340px;
+	left: calc(31.5% + 725px);
 	top: 150px;
 	height: 420px;
 	width: 235px;

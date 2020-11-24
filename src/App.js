@@ -191,7 +191,7 @@ function Main(props) {
             <Route exact path='/portfolio' render={() => <Portfolio selfUser={props.state.selfUser} users={props.state.users} authToken={props.state.authToken}/>} />
             <Route exact path='/stock-profile' render={() => <StockProfile selfUser={props.state.selfUser} authToken={props.state.authToken}/>} />
             <Route exact path='/leaderboard' render={() => <Leaderboard users={props.state.users} authToken={props.state.authToken}/>} />
-            <Route exact path='/faq' render={() => <FAQ/>} />
+            <Route exact path='/faq' render={() => <FAQ login={false}/>} />
             <Route exact path='/login' render={() => <Login updateToken={props.updateToken} getUsers={props.getUsers} getSelf={props.getSelf}/>} />
             <Route exact path='/signup' render={() => <Signup updateToken={props.updateToken} getUsers={props.getUsers} getSelf={props.getSelf}/>} />
         </Switch>

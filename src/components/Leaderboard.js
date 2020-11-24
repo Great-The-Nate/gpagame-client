@@ -32,6 +32,10 @@ class Leaderboard extends React.Component{
 			nameFilter: "",
 		}
 	}
+	componentWillUnmount() {
+    	this.props.users.sort((a,b)=> ((b.stockValue-b.pastStockValue)-(a.stockValue-a.pastStockValue)));
+    	console.log(this.props.users);
+  	}
 
 	leaderboardItemClicked(student){
 		//console.log(student);
